@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css" />
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="node_modules/bootstrap-icons/font/bootstrap-icons.min.css"
+    />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <a class="navbar-brand text-white" href="#" id="mimenu"
+          ><i class="bi bi-camera-video-off"></i> Segmentador de Videos</a
+        >
+      </nav>
+      <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              <i class="bi bi-info-circle-fill"></i> <strong> Acerca de...</strong>
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <strong>Segmentador de Videos.</strong> Esta aplicación le permite seleccionar un video y segmentarlo en videos de <code>5 minutos</code> de duración, deberá seleccionar un video en el campo <strong>Seleccionar Video de Entrada</strong> en <strong>Seleccionar Archivo</strong> y luego la <strong>Seleccione la ruta del destino</strong> donde se guardaran los videos segmentados, recuerde con tan solo <code>5 minutos</code>, de duración.
+              <br>Esta aplicación fue desarrollada por Daivinson Coffi, Enero 2024, Version 1.0.0
+            </div>
+          </div>
+        </div>
+        <!-- Badge -->
+        <button type="button" class="btn btn-primary position-relative m-3">
+          Videos Segmentados
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="missegmentos">
+            0
+            <span class="visually-hidden">Videos Segmentados</span>
+          </span>
+        </button>
+        <!-- Fin Badge -->
+      <div class="mb-3">
+        <i class="bi bi-camera-reels"></i
+        ><strong><label for="videoInput" class="form-label m-1"></label>Seleccionar Video de Entrada</label
+        ></strong>
+        <input
+          class="form-control"
+          type="file"
+          id="videoInput"
+          accept="video/*"
+        />
+      </div>
+      
+      <button
+        type="button"
+        class="btn btn-primary text-center"
+        id="seleccionDirectorioFin"
+        data-title="Selección Directorio Destino"
+      >
+        Seleccione la ruta del destino
+      </button>
+
+      <span class="badge rounded-pill text-bg-primary text-wrap" id="etiqueta"
+        >Aquí va aparecer la ruta del directorio destino, donde se guardará el
+        video segmentado</span
+      >
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked">
+        <label class="form-check-label text-light-emphasis d-flex flex-column h-100" for="flexSwitchCheckChecked" ><strong>Extraer Audio</strong></label>
+        <button id="cutButton" class="alert alert-dark m-1 p-2 text-bg-success">
+          <i class="bi bi-camera-video-off-fill"></i> Segmentar Video
+        </button>
+      </div>
+      
+      
+      <div class="row justify-content-center">
+        <div class="col-auto">
+          <button
+            class="btn btn-dark d-none"
+            id="LoadingVideos"
+            type="button"
+            disabled
+          >
+            <span
+              class="spinner-border spinner-border-sm"
+              aria-hidden="true"
+            ></span>
+            <span role="status">Segmentando Videos...</span>
+          </button>
+        </div>
+        <div
+          class="alert alert-success m-2 w-80 text-center mx-auto d-block d-none"
+          role="alert"
+          id="miAlertaExitosa"
+        >
+          Video Segmentado
+        </div>
+        <div
+          class="alert alert-danger m-2 w-80 text-center mx-auto d-block d-none"
+          role="alert"
+          id="miAlertaError"
+        >
+          Debe seleccionar un directorio destino o archivo de video
+        </div>
+      </div>
+    </div>
+
+    <script src="renderer.js"></script>
+  </body>
+</html>
